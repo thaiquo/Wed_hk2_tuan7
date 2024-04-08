@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+    <script src="../JS/bootstrap.min.js"></script>
+    <script></script>
+    <style>
+      * {
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      form,
+      table,
+      th,
+      tr,
+      td {
+        border: 1px solid #000;
+        border-collapse: collapse;
+      }
+      span,
+      p {
+        text-align: right;
+        padding-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form action="">
+        <h1 class="text-center">Register Form</h1>
+        <table>
+          <tr>
+            <td>
+              <span style="display: inline-block; width: 300px"
+                >Họ và tên (*):</span
+              >
+            </td>
+            <td>
+              <input
+                required
+                style="width: 300px; padding-block: 10px"
+                class="form-control"
+                type="text"
+                id="txtHovaTen"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="display: inline-block; width: 300px"
+                >Tên Đăng nhập (*):</span
+              >
+              <p class="text-danger" id="mgTenDangNhap"></p>
+            </td>
+            <td>
+              <input
+                onblur="ckTenDangNhap()"
+                required
+                class="form-control"
+                type="text"
+                name=""
+                id="txtTenDangNhap"
+                style="width: 300px; padding-block: 10px"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="display: inline-block; width: 300px"
+                >Mật khẩu (*):</span
+              >
+            </td>
+            <td>
+              <input
+                required
+                style="width: 300px; padding-block: 10px"
+                class="form-control"
+                type="password"
+                name=""
+                id="txtMK"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="display: inline-block; width: 300px"
+                >Xác nhân mật khẩu (*):</span
+              >
+            </td>
+            <td>
+              <input
+                required
+                class="form-control"
+                type="password"
+                name=""
+                id="txtReMK"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="display: inline-block; width: 300px"
+                >Ngày sinh:</span
+              >
+            </td>
+            <td>
+              <input
+                class="form-control"
+                type="date"
+                name=""
+                id="txtNgaySinh"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="display: inline-block; width: 300px"
+                >Điện thoại:</span
+              >
+              <p class="text-danger" id="mgDienThoai"></p>
+            </td>
+            <td>
+              <input
+                onblur="ckDienThoai()"
+                style="width: 300px; padding-block: 10px"
+                class="form-control"
+                type="text"
+                id="txtNumber"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="display: inline-block; width: 300px">Địa chỉ:</span>
+            </td>
+            <td>
+              <input
+                style="width: 300px; padding-block: 10px"
+                class="form-control"
+                type="text"
+                id="txtDiaChi"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="display: inline-block; width: 300px"
+                >Email khác:</span
+              >
+              <p class="text-danger" id="mgEmail"></p>
+            </td>
+            <td>
+              <input
+                onblur="ckEmail()"
+                style="width: 300px; padding-block: 10px"
+                class="form-control"
+                type="email"
+                id="txtEmail"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span style="display: inline-block; width: 300px">Sở thích:</span>
+            </td>
+            <td>
+              <select
+                style="width: 300px; padding-block: 10px"
+                name=""
+                id="txtSoThich"
+              >
+                <option value="Ca nhạc">Ca nhạc</option>
+                <option value="Múa">Múa</option>
+                <option value="Xem phim">Xem phim</option>
+                <option value="Khác">Khác</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <span> <td></td></span>
+            <td style="width: 300px; padding-block: 10px">
+              <button onclick="sendInfo()" id="btnDangKy">Đăng ký</button>
+              <button type="reset">Hủy</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <script>
+      function ckTenDangNhap() {
+        const x = document.getElementById("txtTenDangNhap");
+        if (x.value.length < 6) {
+          document.getElementById("mgTenDangNhap").innerHTML =
+            "Tên đăng nhập ít nhất là 6 ký tự";
+          x.focus();
+          return false;
+        } else {
+          document.getElementById("mgTenDangNhap").innerHTML = "";
+          return true;
+        }
+      }
+
+      function ckDienThoai() {
+        const x = document.getElementById("txtNumber");
+        if (isNaN(x.value)) {
+          document.getElementById("mgDienThoai").innerHTML =
+            "Điện thoại phải là số";
+          x.focus();
+          return false;
+        } else {
+          document.getElementById("mgDienThoai").innerHTML = "";
+          return true;
+        }
+      }
+
+      function ckEmail() {
+        const x = document.getElementById("txtEmail");
+        console.log(x.value);
+        var regex = /[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/;
+        if (!regex.test(x.value)) {
+          document.getElementById("mgEmail").innerHTML = "Email không hợp lệ !";
+          x.focus();
+
+          return false;
+        } else {
+          document.getElementById("mgEmail").innerHTML = "";
+          return true;
+        }
+      }
+
+      function sendInfo() {
+        if (ckDienThoai() && ckEmail() && ckTenDangNhap()) {
+          localStorage.setItem(
+            "HovaTen",
+            document.getElementById("txtHovaTen").value
+          );
+          localStorage.setItem(
+            "TenDangNhap",
+            document.getElementById("txtTenDangNhap").value
+          );
+          localStorage.setItem(
+            "MatKhau",
+            document.getElementById("txtMK").value
+          );
+          localStorage.setItem(
+            "NgaySinh",
+            document.getElementById("txtNgaySinh").value
+          );
+          localStorage.setItem(
+            "DienThoai",
+            document.getElementById("txtNumber").value
+          );
+          localStorage.setItem(
+            "DiaChi",
+            document.getElementById("txtDiaChi").value
+          );
+          localStorage.setItem(
+            "Email",
+            document.getElementById("txtEmail").value
+          );
+
+          localStorage.setItem(
+            "Email",
+            document.getElementById("txtEmail").value
+          );
+
+          const x = document.getElementsByTagName("option");
+          for (i = 0; i < x.length; i++) {
+            if (x[i].selected) {
+              localStorage.setItem("SoThich", x[i].value);
+            }
+          }
+
+          window.open("thongtin.html");
+        }
+      }
+    </script>
+  </body>
+</html>

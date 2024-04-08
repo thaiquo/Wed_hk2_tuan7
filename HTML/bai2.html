@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+    <script src="../JS/bootstrap.min.js"></script>
+    <script></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        height: auto;
+      }
+      header {
+        height: 200px;
+        background-image: url(../IMG/car/banner_car.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    </style>
+    <script>
+        
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header></header>
+      <div class="content">
+        <div class="row">
+          <div class="col">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th colspan="2" class="text-center">Bảng tin thị trường</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center bg-secondary" colspan="2">Vàng</td>
+                </tr>
+                <tr>
+                  <td id="VangMuaVao">Mua vào</td>
+                  <td id="VangBanRa">Bán ra</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-center bg-secondary" colspan="2">USD</td>
+                </tr>
+                <tr>
+                  <td id="USDMuaVao">Mua vào</td>
+                  <td id="USDBanRa">Bán ra</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col">
+            <table
+              class="table table-bordered bg-secondary text-white"
+              data-bs-theme="dark"
+            >
+              <thead>
+                <tr>
+                  <th colspan="2">Cập nhật giá trị thị trường</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td >Mua vào</td>
+                  <td colspan="2"><input onblur="toggleBtnSate()" id="txtMuaVao" type="text" autofocus/></td>
+                </tr>
+                <tr>
+                  <td>Bán ra</td>
+                  <td colspan="2"><input type="text" id ="txtBanRa"/></td>
+                </tr>
+                <tr>
+                  <td>Loại xe</td>
+                  <td>
+                    <select name="" id="selection">
+                      <option value="../IMG/car/car1.jpg;35000">Toyota</option>
+                      <option value="../IMG/car/car2.jpg;15000">KIA</option>
+                      <option value="../IMG/car/car3.jpg;40000">Ford</option>
+                      <option value="../IMG/car/car4.jpg;32000">Civic</option>
+                      <option value="../IMG/car/car5.jpg;50000">Ferrari</option>
+                      <option value="../IMG/car/car6.jpg;45000">
+                        Mercesdes
+                      </option>
+                      <!-- <option value=""></option>
+                      <option value=""></option> -->
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td colspan="2">
+                    <input  type="radio" name="group" value="Vang" id="" /> Vàng
+                    <input type="radio" name="group" value="USD" id="" /> USD
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td colspan="2">
+                    <button onclick="update()" style="padding: 3px 5px;">Update</button style="padding: 3px 5px;">
+                    <button id="btnState" style="padding: 3px 5px;" disabled >State</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col">
+            <div class="" style="">
+              <h5 class="bg-secondary text-center" style="height: 30px; margin-bottom: 0;">Bảng báo giá</h5>
+              <div class="" style="border: 1px solid #000">
+                <p>- Với kiểu dáng thể thao, sang trọng</p>
+                <p>- nổi bật, ít tốn nhiên liệu</p>
+                <p>- kiểu dáng thể thao</p>
+              </div>
+              <div class="" style="height: 180px">
+                <img
+                  id="img_show"
+                  src="../IMG/car/car1.jpg"
+                  alt=""
+                  style="width: 100%; height: 100% ;margin: auto; display: block"
+                />
+              </div>
+              <h4 class="bg-secondary text-danger" style="height: 40px;">
+                Giá:
+                <span id="price">35000</span>
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        function toggleBtnSate(){ 
+            const value = document.getElementById('txtMuaVao').value;
+            console.log(isNaN(value))
+            if(isNaN(value) || value ==""){
+                return false;
+            }
+            document.getElementById('btnState').disabled = false;
+            return true;
+        }
+
+        checkedLoaiXe()
+
+        function checkedLoaiXe(){
+          const x = document.getElementsByTagName('option');
+    
+          document.getElementById('selection').onclick = function(){
+            for(i = 0; i< x.length;i++){
+            if(x[i].selected){
+              let img  = x[i].value.slice(0,x[i].value.indexOf(';'));
+              let price = x[i].value.slice(x[i].value.indexOf(';')+1,);
+              console.log(img);
+              console.log(price)
+              document.getElementById('img_show').setAttribute('src',img);
+              document.getElementById('price').innerText = price;
+            }
+          }
+          }
+        }
+
+        function update(){
+          const txtMuaVao = document.getElementById('txtMuaVao').value;
+          const txtBanRa = document.getElementById('txtBanRa').value;
+          if(isNaN(txtMuaVao) || isNaN(txtBanRa) || txtBanRa.length == 0 || txtMuaVao.length == 0){
+            alert("Trường nhập vào phải là số và không được phép rỗng !")
+            return false;
+          }
+          const rd = document.getElementsByName('group');
+          if(rd[0].checked){
+            document.getElementById('VangMuaVao').innerHTML = txtMuaVao;
+            document.getElementById('VangBanRa').innerHTML = txtBanRa;
+          }else if(rd[1].checked){
+            document.getElementById('USDMuaVao').innerHTML = txtMuaVao;
+            document.getElementById('USDBanRa').innerHTML = txtBanRa;
+          }else{
+            document.getElementById('USDMuaVao').innerHTML = txtMuaVao;
+            document.getElementById('USDBanRa').innerHTML = txtBanRa;
+            document.getElementById('VangMuaVao').innerHTML = txtMuaVao;
+            document.getElementById('VangBanRa').innerHTML = txtBanRa;
+          }
+          
+        }
+    </script>
+  </body>
+</html>

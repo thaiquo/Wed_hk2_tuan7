@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+    <script src="../JS/bootstrap.min.js"></script>
+    <script></script>
+    <style>
+      * {
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+    <script></script>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="">
+            <h1 class="text-center">THÔNG TIN CHI TIẾT</h1>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Họ và tên:</td>
+            <td id="txtHovaTen"></td>
+          </tr>
+          <tr>
+            <td>Tên Đăng nhập:</td>
+            <td id="txtTenDangNhap"></td>
+          </tr>
+
+          <tr>
+            <td>Mật khẩu:</td>
+            <td id="txtMK"></td>
+          </tr>
+          <tr>
+            <td>Ngày sinh:</td>
+            <td id="txtNgaySinh"></td>
+          </tr>
+          <tr>
+            <td>Điện thoại:</td>
+            <td id="txtNumber"></td>
+          </tr>
+          <tr>
+            <td>Địa chỉ:</td>
+            <td id="txtDiaChi"></td>
+          </tr>
+          <tr>
+            <td>Email khác:</td>
+            <td id="txtEmail"></td>
+          </tr>
+          <tr>
+            <td>Sở thích:</td>
+            <td id="txtSoThich"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      document.getElementById("txtHovaTen").innerHTML =
+        localStorage.getItem("HovaTen");
+      document.getElementById("txtTenDangNhap").innerHTML =
+        localStorage.getItem("TenDangNhap");
+      document.getElementById("txtMK").innerHTML =
+        localStorage.getItem("MatKhau");
+      document.getElementById("txtNgaySinh").innerHTML =
+        localStorage.getItem("NgaySinh");
+      document.getElementById("txtNumber").innerHTML =
+        localStorage.getItem("DienThoai");
+      document.getElementById("txtDiaChi").innerHTML =
+        localStorage.getItem("DiaChi");
+      document.getElementById("txtEmail").innerHTML =
+        localStorage.getItem("Email");
+      document.getElementById("txtSoThich").innerHTML =
+        localStorage.getItem("SoThich");
+    </script>
+  </body>
+</html>

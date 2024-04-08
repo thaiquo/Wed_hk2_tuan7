@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+    <script src="../JS/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        $(".img_animal").click((e) => {
+          console.log(e.target.nextSibling.nextSibling);
+          document.getElementById("img_content").src = e.target.src;
+          document.getElementById("content_name").innerHTML =
+            e.target.nextSibling.nextSibling.innerHTML;
+        });
+      });
+    </script>
+    <style>
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        cursor: pointer;
+      }
+
+      .col {
+        width: 150px;
+        height: 150px;
+        padding: 7px;
+        padding-bottom: 20px;
+      }
+
+      h4:not(h4:first-child) {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div
+            id="control"
+            class="row"
+            style="border: 1px solid #000; padding-block: 10px"
+          >
+            <h4>Animal Gallery</h4>
+            <div class="row">
+              <div class="col">
+                <img class="img_animal" src="../IMG/lion.jpg" alt="" />
+                <h4>Lion</h4>
+              </div>
+              <div class="col">
+                <img class="img_animal" src="../IMG/cat.jpg" alt="" />
+                <h4>Cat</h4>
+              </div>
+              <div class="col">
+                <img class="img_animal" src="../IMG/bird.jpg" alt="" />
+                <h4>Bird</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <img class="img_animal" src="../IMG/Rhino.jpg" alt="" />
+                <h4>Rhine</h4>
+              </div>
+              <div class="col">
+                <img class="img_animal" src="../IMG/panda.jpg" alt="" />
+                <h4>Panda</h4>
+              </div>
+              <div class="col">
+                <img class="img_animal" src="../IMG/sheep.jpg" alt="" />
+                <h4>Goat</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div id="content" style="width: 400px; height: 400px; margin: auto">
+            <img
+              id="img_content"
+              src=""
+              alt=""
+              width="80%"
+              height="90%"
+              class=""
+            />
+            <h1 id="content_name" class="text-center">Name ?</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
